@@ -59,7 +59,7 @@ Open `http://localhost:8000`. Configure the local URL under **Authentication →
 ## Security notes and verification
 
 - `products` has RLS enabled and grants row access only when `public.is_admin()` confirms the signed-in user’s role. Anonymous users and authenticated non-admins cannot read private prices or mutate products.
-- The public `public_products` view returns only product identity, display details, public price and a boolean availability flag. Do not add market/offer price columns to it. The view owner can read published rows, while direct table access remains RLS-protected.
+- The `public_products` view is an owner-rights view owned by `postgres`; it returns only product identity, display details, public price and a boolean availability flag. Do not add market/offer price columns to it. Direct table access remains RLS-protected.
 - Categories are public display data. Only admins can change them. User role rows are readable only by the matching signed-in user; browser users cannot grant roles.
 - The image bucket allows public image reads and limits writes/deletes to admins.
 - The admin URL is only a navigation route. Supabase Auth, role verification and RLS enforce access; hiding the dashboard is not the security control.

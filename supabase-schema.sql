@@ -116,7 +116,7 @@ grant select on public.user_roles to authenticated;
 -- This view intentionally exposes only customer-safe columns. It is an
 -- owner-rights view; do not add internal pricing or admin-only fields here.
 create or replace view public.public_products
-with (security_barrier = true)
+with (security_barrier = true, security_invoker = false)
 as
 select
   p.id,
@@ -132,6 +132,7 @@ from public.products as p
 left join public.categories as c on c.id = p.category_id
 where p.is_published = true;
 
+alter view public.public_products owner to postgres;
 revoke all on public.public_products from public, anon, authenticated;
 grant select on public.public_products to anon, authenticated;
 
