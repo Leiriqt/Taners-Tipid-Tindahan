@@ -1,0 +1,17 @@
+# Environment credentials and local-only settings
+.env
+.env.*
+!.env.example
+config.local.js
+
+# Local tooling and generated files
+.vercel/
+.supabase/
+node_modules/
+dist/
+build/
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db

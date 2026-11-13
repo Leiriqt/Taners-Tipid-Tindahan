@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f3">
+    <meta name="description" content="Thoughtful finds, fair prices. Browse the latest picks from Tipid Tan.">
+    <title>Tipid Tan — Good finds, better prices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement"><span class="announcement-dot"></span> A little more value in every find <span class="announcement-arrow">↗</span></div>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Tipid Tan home">
+        <span class="brand-mark">t<span>.</span></span>
+        <span class="brand-name">tipid<span>tan</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#shop">Shop all</a>
+        <a class="nav-link" href="#shop" data-category-link="New arrivals">New arrivals</a>
+        <a class="nav-link" href="#about">Our story</a>
+      </nav>
+      <a class="header-contact" href="https://m.me/" target="_blank" rel="noreferrer">
+        <span>Have a question?</span><strong>Message us <span aria-hidden="true">↗</span></strong>
+      </a>
+      <button class="mobile-menu" id="mobile-menu" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <main id="storefront">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE GOOD-FIND EDIT</div>
+          <h1>Good finds.<br><em>Better</em> prices.</h1>
+          <p>Everyday essentials and little upgrades, handpicked for a life well lived — without the extra spend.</p>
+          <a class="button button-dark" href="#shop">Explore the collection <span aria-hidden="true">↘</span></a>
+          <div class="hero-note"><span class="tiny-spark">✳</span> Thoughtfully picked, always worth it.</div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a thoughtfully curated shopping bag">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div><span class="art-star star-one">✳</span><span class="art-star star-two">✳</span>
+          <div class="art-card art-card-back"><span>THE EVERYDAY EDIT</span><b>little things,<br>big joy.</b><i>01 / 04</i></div>
+          <div class="art-bag"><div class="bag-handle"></div><div class="bag-face"><span>t.</span><small>GOOD THINGS INSIDE</small></div></div>
+          <div class="art-product product-orb"><span>✦</span></div>
+          <div class="art-caption"><span class="caption-dot"></span> THE LITTLE JOY COLLECTION</div>
+          <div class="art-counter"><b>01</b><span>/</span> 04</div>
+        </div>
+        <div class="hero-bottom"><span>CURATED FOR YOUR EVERYDAY</span><span>SCROLL TO DISCOVER ↓</span></div>
+      </section>
+
+      <section class="shop-section" id="shop">
+        <div class="section-topline"><span>GOOD THINGS, FOUND</span><span id="product-count">0 PIECES</span></div>
+        <div class="shop-heading">
+          <div><div class="eyebrow">A THOUGHTFUL LITTLE COLLECTION</div><h2>Find your next <em>favorite.</em></h2></div>
+          <p>Useful, delightful, and priced just right.<br>Take a look around.</p>
+        </div>
+        <div class="shop-toolbar">
+          <div class="category-filters" id="category-filters" aria-label="Filter by category">
+            <button class="filter-chip selected" data-category="">Everything</button>
+          </div>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Find something..." autocomplete="off"><kbd>⌘ K</kbd></label>
+        </div>
+        <div class="catalog-status" id="catalog-status" role="status">Connecting to the shop…</div>
+        <div class="product-grid" id="product-grid"></div>
+        <div class="empty-state hidden" id="empty-state">
+          <div class="empty-icon">✳</div><h3>No finds just yet.</h3>
+          <p>Our next little collection is on its way. Check back soon.</p>
+        </div>
+        <div class="shop-footer-note"><span>✳</span> A small shop with a big heart. Thanks for being here.</div>
+      </section>
+
+      <section class="story-section" id="about">
+        <div class="story-stamp">t<span>.</span></div>
+        <div><div class="eyebrow">A NOTE FROM OUR LITTLE SHOP</div><h2>More joy.<br><em>Less splurge.</em></h2></div>
+        <p>We believe the things you use every day should feel a little special — and leave room in your budget for everything else. That’s why we look for useful, lovely finds at prices that feel right.</p>
+        <a href="https://m.me/" target="_blank" rel="noreferrer" class="text-link">Say hello <span>↗</span></a>
+      </section>
+    </main>
+
+    <main id="admin-app" class="admin-app hidden">
+      <section class="login-wrap hidden" id="login-view">
+        <div class="login-card">
+          <a class="brand login-brand" href="#"><span class="brand-mark">t<span>.</span></span><span class="brand-name">tipid<span>tan</span></span></a>
+          <div class="eyebrow">JUST FOR THE SHOPKEEPER</div>
+          <h1>Welcome <em>back.</em></h1>
+          <p>Sign in to manage your shop and its good finds.</p>
+          <form id="login-form">
+            <label>Email address<input name="email" type="email" autocomplete="username" required placeholder="you@example.com"></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"></label>
+            <button class="button button-dark button-full" type="submit">Sign in <span>↗</span></button>
+            <div class="form-message" id="login-message" role="status"></div>
+          </form>
+          <a class="back-to-shop" href="#">← Back to the storefront</a>
+        </div>
+      </section>
+      <section class="admin-layout hidden" id="dashboard-view">
+        <aside class="admin-sidebar">
+          <a class="brand" href="#"><span class="brand-mark">t<span>.</span></span><span class="brand-name">tipid<span>tan</span></span></a>
+          <div class="sidebar-label">YOUR SHOP</div>
+          <button class="side-link selected" data-admin-tab="products"><span>▦</span> Products <span class="side-count" id="side-product-count">0</span></button>
+          <button class="side-link" data-admin-tab="categories"><span>◫</span> Categories</button>
+          <div class="sidebar-bottom">
+            <div class="admin-profile"><span class="profile-avatar">t.</span><div><b>Shopkeeper</b><small id="admin-email"></small></div></div>
+            <button class="side-link logout-button" id="logout-button"><span>↪</span> Sign out</button>
+            <a class="view-store-link" href="#">↗ View storefront</a>
+          </div>
+        </aside>
+        <div class="admin-main">
+          <header class="admin-topbar"><div><span class="admin-breadcrumb">YOUR SHOP</span><span class="breadcrumb-divider">/</span><span id="admin-page-title">Products</span></div><div class="topbar-right"><span class="live-dot"></span> Your shop is live <a href="#">↗</a></div></header>
+          <div class="admin-content">
+            <section id="products-panel">
+              <div class="admin-title-row"><div><div class="eyebrow">YOUR LITTLE CORNER OF THE INTERNET</div><h1>Products <span class="title-count" id="admin-total">0</span></h1><p>Keep your collection fresh and your pricing just right.</p></div><button class="button button-dark" id="add-product-button"><span>＋</span> Add a product</button></div>
+              <div class="metrics-row">
+                <article class="metric-card"><span>ALL PRODUCTS</span><b id="metric-all">0</b><small>In your collection</small><i>▦</i></article>
+                <article class="metric-card"><span>PUBLISHED</span><b id="metric-published">0</b><small>Visible to everyone</small><i class="metric-green">↗</i></article>
+                <article class="metric-card"><span>NEEDS A LITTLE LOVE</span><b id="metric-draft">0</b><small>Unpublished products</small><i class="metric-amber">◷</i></article>
+              </div>
+              <div class="inventory-card">
+                <div class="inventory-heading"><div><h2>Your collection</h2><p>A little overview of everything you’re selling.</p></div><label class="admin-search"><span>⌕</span><input id="admin-search" type="search" placeholder="Search products..."></label></div>
+                <div class="table-wrap"><table class="inventory-table"><thead><tr><th>PRODUCT</th><th>STATUS</th><th>MARKET</th><th>MY OFFER</th><th>PUBLIC PRICE</th><th>STOCK</th><th></th></tr></thead><tbody id="admin-products-body"></tbody></table></div>
+                <div class="admin-empty hidden" id="admin-empty"><span>✳</span><h3>Your collection starts here.</h3><p>Add your first product and it’ll show up here.</p><button class="button button-dark" id="empty-add-button">＋ Add a product</button></div>
+              </div>
+              <p class="privacy-note"><span>♧</span> Your market and offer prices are private — customers only see your public price.</p>
+            </section>
+            <section class="category-panel hidden" id="categories-panel">
+              <div class="admin-title-row"><div><div class="eyebrow">KEEP THINGS ORGANIZED</div><h1>Categories</h1><p>Group your good finds so they’re easy to browse.</p></div></div>
+              <div class="inventory-card category-manager"><div class="inventory-heading"><div><h2>Your categories</h2><p>Changes appear on the storefront right away.</p></div></div><form id="category-form" class="category-add-form"><input name="name" required maxlength="60" placeholder="e.g. Home & living"><button class="button button-dark" type="submit">＋ Add category</button></form><div id="admin-category-list"></div></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#"><span class="brand-mark">t<span>.</span></span><span class="brand-name">tipid<span>tan</span></span></a>
+      <span>Thoughtful finds, fair prices. Made with a little ✳</span>
+      <a href="https://m.me/" target="_blank" rel="noreferrer">LET’S CHAT ↗</a>
+    </footer>
+
+    <dialog class="product-dialog" id="product-dialog"><button class="dialog-close" data-close-dialog aria-label="Close">×</button><div id="product-detail"></div></dialog>
+    <dialog class="product-dialog admin-dialog" id="edit-dialog">
+      <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+      <div class="edit-dialog-content"><div class="eyebrow">A GOOD FIND FOR YOUR SHOP</div><h2 id="edit-title">Add a product</h2><p class="dialog-intro">The details, the prices, all in one place.</p>
+        <form id="product-form" class="product-form">
+          <input name="id" type="hidden">
+          <label class="field-full">Product name<input name="name" required maxlength="120" placeholder="e.g. Everyday ceramic mug"></label>
+          <label class="field-full">Description<textarea name="description" rows="3" maxlength="2000" placeholder="What makes this one worth a look?"></textarea></label>
+          <label>Category<select name="category_id" id="product-category"><option value="">No category</option></select></label>
+          <label>Stock quantity<input name="stock_quantity" type="number" min="0" step="1" value="1" required></label>
+          <label class="field-full image-upload">Product photo <span class="sub-label">JPEG, PNG, WebP or GIF · up to 5 MB</span><input name="image" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><span class="image-current" id="image-current">No image selected</span></label>
+          <div class="price-section field-full"><div class="price-section-title"><span>THE PRICING</span><small>Private prices are only visible to you.</small></div>
+            <label>Market price <span class="sub-label">Your reference point</span><div class="money-input"><span>₱</span><input name="market_price" type="number" min="0" step="0.01" required placeholder="0.00"></div></label>
+            <label>My offer price <span class="sub-label">What it costs you</span><div class="money-input"><span>₱</span><input name="offer_price" type="number" min="0" step="0.01" required placeholder="0.00"></div></label>
+            <label class="field-full public-price-field">Public posted price <span class="sub-label">Set independently — this is what customers see.</span><div class="money-input"><span>₱</span><input name="public_price" type="number" min="0" step="0.01" required placeholder="0.00"></div></label>
+            <div class="price-insights field-full" id="price-insights"><span>Set your prices to see the breakdown.</span></div>
+          </div>
+          <label class="publish-toggle field-full"><input name="is_published" type="checkbox"><span class="toggle-ui"></span><span><b>Publish this product</b><small>It’ll be visible in your public shop.</small></span></label>
+          <div class="form-actions field-full"><button type="button" class="button button-light" data-close-dialog>Cancel</button><button type="submit" class="button button-dark">Save product <span>↗</span></button></div>
+          <div class="form-message field-full" id="product-message" role="status"></div>
+        </form>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
